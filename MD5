@@ -1,0 +1,11 @@
+a6c3c6408f175acbf23d04a653c4eb19 *DESCRIPTION
+535c8b13c7a0883d8713b44c6712ce5d *NAMESPACE
+af7d25f32180cfdee1330d1275642284 *R/decompose-seasonal.R
+dd8e74861b5409d562c96ef94b05a1e6 *R/misc_doc.R
+79f060a5deb56fcf5d5b70ced3f1bbf4 *R/stl-seasonal.R
+6d9935b436af49642ca38e885920e5cd *R/x13-seasonal.R
+3f7cff72f3356d57b585a9108d491a78 *data/ldeaths_df.rda
+0478da26aed6d7e1b212f6cfe97fd742 *man/ldeaths_df.Rd
+34955e3afc211a746e9f80b4f578c00b *man/stat_decomp.Rd
+8ae49c240ad939121861c35a1c94578a *man/stat_seas.Rd
+a728de04bed99e048cdcc387bfdce78c *man/stat_stl.Rd
