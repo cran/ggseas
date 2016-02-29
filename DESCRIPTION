@@ -1,6 +1,6 @@
 Package: ggseas
 Title: 'stats' for Seasonal Adjustment on the Fly with 'ggplot2'
-Version: 0.2.0
+Version: 0.2.1
 Author: Peter Ellis <peter.ellis2013nz@gmail.com>
 Maintainer: Peter Ellis <peter.ellis2013nz@gmail.com>
 Description: Provides 'ggplot2' 'stats' that estimate seasonally adjusted series 
@@ -11,6 +11,6 @@ LazyData: true
 RoxygenNote: 5.0.1
 BugReports: https://github.com/ellisp/ggseas/issues
 NeedsCompilation: no
-Packaged: 2016-02-27 20:00:17 UTC; Peter Ellis
+Packaged: 2016-02-28 19:22:46 UTC; Peter Ellis
 Repository: CRAN
-Date/Publication: 2016-02-28 09:59:33
+Date/Publication: 2016-02-29 11:08:33
