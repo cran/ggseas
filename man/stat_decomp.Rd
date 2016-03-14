@@ -6,20 +6,33 @@
 \usage{
 stat_decomp(mapping = NULL, data = NULL, geom = "line",
   position = "identity", show.legend = NA, inherit.aes = TRUE, frequency,
-  type = c("additive", "multiplicative"), ...)
+  type = c("additive", "multiplicative"), index.ref = NULL,
+  index.basis = 100, ...)
 }
 \arguments{
-\item{mapping}{The aesthetic mapping, usually constructed with
-\code{\link{aes}} or \code{\link{aes_string}}. Only needs to be set
-at the layer level if you are overriding the plot defaults.}
+\item{mapping}{Set of aesthetic mappings created by \code{\link{aes}} or
+\code{\link{aes_}}. If specified and \code{inherit.aes = TRUE} (the
+default), it is combined with the default mapping at the top level of the
+plot. You must supply \code{mapping} if there is no plot mapping.}
 
-\item{data}{A layer specific dataset - only needed if you want to override
-the plot defaults.}
+\item{data}{The data to be displayed in this layer. There are three
+   options:
+
+   If \code{NULL}, the default, the data is inherited from the plot
+   data as specified in the call to \code{\link{ggplot}}.
+
+   A \code{data.frame}, or other object, will override the plot
+   data. All objects will be fortified to produce a data frame. See
+   \code{\link{fortify}} for which variables will be created.
+
+   A \code{function} will be called with a single argument,
+   the plot data. The return value must be a \code{data.frame.}, and
+   will be used as the layer data.}
 
 \item{geom}{The geometric object to use display the data}
 
-\item{position}{The position adjustment to use for overlapping points
-on this layer}
+\item{position}{Position adjustment, either as a string, or the result of
+a call to a position adjustment function.}
 
 \item{show.legend}{logical. Should this layer be included in the legends?
 \code{NA}, the default, includes if any aesthetics are mapped.
@@ -33,6 +46,13 @@ the default plot specification, e.g. \code{\link{borders}}.}
 \item{frequency}{The frequency for the time series}
 
 \item{type}{The type of seasonal component}
+
+\item{index.ref}{if not NULL, a vector of integers indicating which elements of
+the beginning of each series to use as a reference point for converting to an index.  
+If NULL, no conversion takes place and the data are presented on the original scale.}
+
+\item{index.basis}{if index.ref is not NULL, the basis point for converting
+to an index, most commonly 100 or 1000.  See examples.}
 
 \item{...}{other arguments for the geom}
 }
@@ -48,25 +68,33 @@ over time, or take outliers into account in calculating seasonality.
 \examples{
 ap_df <- tsdf(AirPassengers)
 
-# default additive decomposition (doesn't work well in this case!):
+# Default additive decomposition (doesn't work well in this case!):
 ggplot(ap_df, aes(x = x, y = y)) +
    stat_decomp(frequency = 12)
 
-# multiplicative decomposition, more appropriate:
+# Multiplicative decomposition, more appropriate:
 ggplot(ap_df, aes(x = x, y = y)) +
    stat_decomp(frequency = 12, type = "multiplicative")
 
+# Multiple time series example:
 ggplot(ldeaths_df, aes(x = YearMon, y = deaths, colour = sex)) +
   geom_point() +
   facet_wrap(~sex) +
   stat_decomp(frequency = 12) +
   ggtitle("Seasonally adjusted lung deaths")
 
+# Example using index:
+ggplot(ldeaths_df, aes(x = YearMon, y = deaths, colour = sex)) +
+  facet_wrap(~sex) +
+  stat_rollapplyr(width = 12, align = "center", index.ref = 1:12, index.basis = 1000) +
+  ggtitle("Rolling annual median lung deaths, indexed (average month in 1974 = 1000)")
+
 }
 \seealso{
 \code{\link{decompose}}
 
-Other time.series.stats.for.ggplot2: \code{\link{stat_seas}},
+Other time.series.stats.for.ggplot2: \code{\link{stat_index}},
+  \code{\link{stat_rollapplyr}}, \code{\link{stat_seas}},
   \code{\link{stat_stl}}
 }
 

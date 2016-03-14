@@ -5,7 +5,8 @@
 \title{Visualise seasonal decomposition}
 \usage{
 ggsdc(data, mapping, frequency, method = c("stl", "decompose", "seas"), start,
-  s.window, type = c("additive", "multiplicative"))
+  s.window, type = c("additive", "multiplicative"), index.ref = NULL,
+  index.basis = 100)
 }
 \arguments{
 \item{data}{dataset to use for plot.}
@@ -24,6 +25,13 @@ to the \code{seats} program from X-13-SEATS-ARIMA via the \code{seasonal} packag
 \item{s.window}{parameter to pass to \code{stl()}}
 
 \item{type}{parameter to pass to \code{decompose()}}
+
+\item{index.ref}{if not NULL, a vector of integers indicating which elements of
+the beginning of each series to use as a reference point for converting to an index.  
+If NULL, no conversion takes place and the data are presented on the original scale.}
+
+\item{index.basis}{if index.ref is not NULL, the basis point for converting
+to an index, most commonly 100 or 1000.  See examples.}
 }
 \value{
 an object of class ggplot with four facets
@@ -70,6 +78,11 @@ ggsdc(serv, aes(x = TimePeriod, y = Value, colour = Category),
       method = "seas", start = c(1971, 2), frequency = 4) +
    geom_line()
 }
+
+ggsdc(ldeaths_df, aes(x = YearMon, y = deaths, colour = sex), s.window = 7, frequency = 12,
+   index.ref = 1:12, index.basis = 1000) +
+   geom_line() +
+   ylab("Lung deaths index (average month in 1974 = 1000)")
       
 bop <- subset(nzbop, Account == "Current account" & !Balance)
 ggsdc(bop, aes(x = TimePeriod, y = Value, colour = Category), frequency = 4, 
