@@ -4,9 +4,9 @@
 \alias{ggsdc}
 \title{Visualise seasonal decomposition}
 \usage{
-ggsdc(data, mapping, frequency, method = c("stl", "decompose", "seas"), start,
-  s.window, type = c("additive", "multiplicative"), index.ref = NULL,
-  index.basis = 100)
+ggsdc(data, mapping, frequency = NULL, method = c("stl", "decompose",
+  "seas"), start = NULL, s.window, type = c("additive", "multiplicative"),
+  index.ref = NULL, index.basis = 100)
 }
 \arguments{
 \item{data}{dataset to use for plot.}
@@ -55,21 +55,20 @@ on the scale of the original data), depending on the settings.
 # sample time series data in data frame
 ap_df <- tsdf(AirPassengers)
 
-ggsdc(ap_df, aes(x = x, y = y), method = "decompose", frequency = 12) +
+ggsdc(ap_df, aes(x = x, y = y), method = "decompose") +
    geom_line()
    
-ggsdc(ap_df, aes(x = x, y = y), method = "decompose", frequency = 12, 
+ggsdc(ap_df, aes(x = x, y = y), method = "decompose", 
       type = "multiplicative") +
    geom_line(colour = "blue", size = 2) +
    theme_light(8)
 
-ggsdc(ap_df, aes(x = x, y = y), method = "stl", frequency = 12, s.window = 7) +
+ggsdc(ap_df, aes(x = x, y = y), method = "stl", s.window = 7) +
    labs(x = "", y = "Air passenger numbers") +
    geom_point()
    
 \dontrun{      
-ggsdc(ldeaths_df, aes(x = YearMon, y = deaths, colour = sex), method = "seas", 
-      frequency = 12, start = c(1949, 1)) +
+ggsdc(ldeaths_df, aes(x = YearMon, y = deaths, colour = sex), method = "seas") +
       geom_line()
       
 serv <- subset(nzbop, Account == "Current account" & 
@@ -79,7 +78,7 @@ ggsdc(serv, aes(x = TimePeriod, y = Value, colour = Category),
    geom_line()
 }
 
-ggsdc(ldeaths_df, aes(x = YearMon, y = deaths, colour = sex), s.window = 7, frequency = 12,
+ggsdc(ldeaths_df, aes(x = YearMon, y = deaths, colour = sex), s.window = 7, 
    index.ref = 1:12, index.basis = 1000) +
    geom_line() +
    ylab("Lung deaths index (average month in 1974 = 1000)")
