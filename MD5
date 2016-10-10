@@ -1,7 +1,7 @@
-40c5e4555914a6114d68478d84375e23 *DESCRIPTION
+1a885ff0356ef60afcd314c0bf94979c *DESCRIPTION
 52ccef12edcbb4c191a236e460d74069 *NAMESPACE
 6b50e56752dd5cc158169b4e421fe314 *R/decompose-seasonal.R
-d1dcddf816677684f78c3fad9404169b *R/ggsdc.R
+4fddeb592f9389d42fcf13c5756ce4d8 *R/ggsdc.R
 f461da15762cf338ad699be963e5ba44 *R/helper_funcs.R
 91a777ddbab12084056da9440abca9ee *R/misc_doc.R
 8d336dad8e481bf062e1346fc71115d0 *R/stat_index.R
@@ -9,9 +9,13 @@ f576ccb34059bfa1d1c52456f9dad565 *R/stat_rollapplyr.R
 b33a354ea0e9f1dc5b66d01b53015b0d *R/stl-seasonal.R
 4ce1d6e3d20a646b9bd10ffd5d2a1233 *R/tsdf.R
 a56b3b6ae66daf7fa770694665ce00fc *R/x13-seasonal.R
+9153ec2f7543f60336993a640c45145f *build/vignette.rds
 3f7cff72f3356d57b585a9108d491a78 *data/ldeaths_df.rda
 8b0fbc07db064491153514355c334e7d *data/nzbop.rda
-873d7d435bf49e74423b8dd931655461 *man/ggsdc.Rd
+213673a896a707c4a531c1cf492e692c *inst/doc/ggsdc.R
+50d789f4d74acdbfc57c46196666101a *inst/doc/ggsdc.Rmd
+4f7050dcce67d8bec980adbe1b1b938b *inst/doc/ggsdc.html
+b59fdf2999fe59c9e86d22e3d361ad0f *man/ggsdc.Rd
 0478da26aed6d7e1b212f6cfe97fd742 *man/ldeaths_df.Rd
 861ed9afc95abd8967dd4f198a7f9187 *man/nzbop.Rd
 ed2b055b66210af7ba614e1bd95f3c17 *man/stat_decomp.Rd
@@ -23,3 +27,4 @@ afbbae2b49a4cd435874ce39fe32a516 *man/stat_stl.Rd
 31564d25e5c0328ad676c46ce66b5d3d *tests/testthat.R
 82070acaed7c9b49dfdd9a29aaeab953 *tests/testthat/test-ggsdc.R
 3a6adab401e783439100627e44152857 *tests/testthat/test-tsdf.R
+50d789f4d74acdbfc57c46196666101a *vignettes/ggsdc.Rmd
